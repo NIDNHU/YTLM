@@ -17,6 +17,7 @@ YOUTUBE_VIDEO_ID = config["YOUTUBE_VIDEO_ID"]
 RATE_LIMIT_SECONDS = config['RATE_LIMIT_SECONDS']
 VLC_PATH = config['VLC_PATH']
 PREFIX = config['PREFIX']
+QUEUE_COMMAND = config['QUEUE_COMMAND']
 user_last_command = defaultdict(lambda: 0)
 
 
@@ -82,7 +83,7 @@ def on_chat_message(chat):
     current_time = time.time()
 
     # Check if the message starts with !queue
-    if message.startswith(f"{PREFIX}queue"):
+    if message.startswith(f"{PREFIX}{QUEUE_COMMAND}"):
         parts = message.split()
         if len(parts) < 2:
             return  # Ignore invalid command format
